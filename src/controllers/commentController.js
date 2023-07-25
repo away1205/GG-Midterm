@@ -1,23 +1,35 @@
 const {
-  getUserCommentService,
-  postUserCommentService,
-} = require('../services/userCommentService');
+  getListCommentService,
+  postCommentService,
+} = require('../services/commentService');
 const AppError = require('./AppError');
 
-const getUserComment = async (req, res) => {
-  const userComment = await getUserCommentService();
+const getUserComment = async (req, res, next) => {
+  try {
+    const comments = await getListCommentService();
 
-  if (!userComment) throw new AppError('No comment', 404);
+    if (!comments) throw new AppError('No comments', 404);
 
-  res.status(200).json(userComment);
+    res.status(200).json({ status: 'success', list_comments: comments });
+  } catch (err) {
+    next(err);
+  }
 };
 
-const postUserComment = (req, res) => {
-  const { username, comment, videoID } = req.body;
+const postUserComment = async (req, res, next) => {
+  const { username, comment } = req.body;
+  const { videoID } = req.params;
 
-  const newComment = postUserCommentService(username, comment, videoID);
+  try {
+    if (!username) throw new AppError('Please input username!', 404);
+    if (!comment) throw new AppError('Please input comment!', 404);
 
-  res.status(201).json(newComment ? 'Success' : 'Fail');
+    const newComment = await postCommentService(videoID, username, comment);
+
+    res.status(201).json({ status: 'success', inserted_comment: newComment });
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports = { getUserComment, postUserComment };
