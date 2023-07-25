@@ -11,10 +11,8 @@ router.get('/', getAllVideo);
 router.post('/', postVideo);
 router.get('/:videoID', getListProduct);
 router.post('/:videoID', postProduct);
+// router.get('/:videoID', getComments);
+// router.post('/:videoID', postComments);
 router.post('/user', makeUser);
-
-// app.get('/', getAllVideo);
-// app.post('/', postVideo);
-// app.post('/user', makeUser);
 
 module.exports = router;
