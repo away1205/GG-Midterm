@@ -11,7 +11,7 @@ const getListCommentService = async (videoID) => {
   }
 };
 
-const postCommentService = async (videoID) => {
+const postCommentService = async (videoID, username, comment) => {
   try {
     const isValidVideoID = videoID.match(/^[0-9a-fA-F]{24}$/); // Validation of MongoID _id Value
     if (!isValidVideoID) throw new Error('VideoID is invalid');
