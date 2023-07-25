@@ -4,7 +4,7 @@ const {
 } = require('../services/commentService');
 const AppError = require('./AppError');
 
-const getUserComment = async (req, res, next) => {
+const getListComment = async (req, res, next) => {
   try {
     const comments = await getListCommentService();
 
@@ -16,7 +16,7 @@ const getUserComment = async (req, res, next) => {
   }
 };
 
-const postUserComment = async (req, res, next) => {
+const postComment = async (req, res, next) => {
   const { username, comment } = req.body;
   const { videoID } = req.params;
 
@@ -32,4 +32,4 @@ const postUserComment = async (req, res, next) => {
   }
 };
 
-module.exports = { getUserComment, postUserComment };
+module.exports = { getListComment, postComment };
