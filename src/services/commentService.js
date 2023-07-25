@@ -1,20 +1,40 @@
-const UserComment = require('../models/UserComment');
+const Comment = require('../models/Comment');
+const Video = require('../models/Video');
 
-const getUserCommentService = async (videoID) => {
-  const userComment = await UserComment.findOne(videoID);
-  return userComment;
+const getListCommentService = async (videoID) => {
+  try {
+    const comments = await Comment.find(videoID);
+    return comments;
+  } catch (err) {
+    console.log(err);
+    throw new Error('Failed to get user comment: ' + err.message);
+  }
 };
 
-const postUserCommentService = async () => {
-  const { username, comment, videoID } = req.query;
-  const newComment = {
-    username: username,
-    comment: comment,
-    videoID: videoID,
-  };
+const postCommentService = async () => {
+  const { username, comment } = req.query;
+  const { videoID } = req.params;
 
-  const userComment = await UserComment.insertOne(newComment);
-  return userComment;
+  try {
+    const isValidVideoID = videoID.match(/^[0-9a-fA-F]{24}$/); // Validation of MongoID _id Value
+    if (!isValidVideoID) throw new Error('VideoID is invalid');
+    if (!username) throw new Error('Username is required!');
+    if (!comment) throw new Error('comment is required!');
+
+    const queriedVideo = await Video.findById(videoID);
+    if (!queriedVideo) throw new Error('videoID is not found');
+
+    const newComment = new Comment({
+      username: username,
+      comment: comment,
+    });
+    newComment.video = videoID;
+
+    return newComment.save();
+  } catch (err) {
+    console.log(err);
+    throw new Error('Failed to post user comment: ' + err.message);
+  }
 };
 
-module.exports = { getUserCommentService, postUserCommentService };
+module.exports = { getListCommentService, postCommentService };
