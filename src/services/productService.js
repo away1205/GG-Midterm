@@ -4,7 +4,7 @@ const Video = require('../models/Video');
 const getListProductService = async (videoID) => {
   try {
     const isValidVideoID = videoID.match(/^[0-9a-fA-F]{24}$/); // Validation of MongoID _id Value
-    if (!isValidVideoID) throw new Error('VideoID is invalid');
+    if (!isValidVideoID) return null;
 
     const queriedVideo = await Video.findById(videoID);
     if (!queriedVideo) throw new Error('Video not found');
