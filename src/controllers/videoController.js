@@ -42,7 +42,7 @@ const postVideo = async (req, res, next) => {
     if (!title) throw new AppError('Please input video title!', 404);
     if (!url) throw new AppError('Please input url thumbnail!', 404);
 
-    const video = await postVideoService(userID, title, url);
+    const video = await postVideoService(username, title, url);
     res.status(201).json({ status: 'success', inserted_video: video });
   } catch (err) {
     next(err);

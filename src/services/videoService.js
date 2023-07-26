@@ -29,7 +29,7 @@ const getDetailVideosService = async (videoID) => {
 
 const postVideoService = async (username, title, url) => {
   try {
-    if (!username) throw new Error('username is Required');
+    if (!username) throw new Error('Username is Required');
     if (!title) throw new Error('Video title is Required');
     if (!url) throw new Error('URL thumbnail is Required');
 
@@ -38,11 +38,8 @@ const postVideoService = async (username, title, url) => {
       title: title,
       url_thumbnail: url,
     });
-    newVideo.user = queriedUser;
-    queriedUser.video.push(newVideo);
 
     const data = await newVideo.save();
-    await queriedUser.save();
     return data;
   } catch (err) {
     console.log(err);
