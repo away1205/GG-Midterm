@@ -4,7 +4,7 @@ const User = require('../models/User');
 const getListVideosService = async () => {
   try {
     const video = await Video.find()
-      .populate('user', 'username')
+      .populate('creator', 'username')
       .select('-list_products -list_comments');
 
     return video;
@@ -18,7 +18,7 @@ const getDetailVideosService = async (videoID) => {
   try {
     const isValidVideoID = videoID.match(/^[0-9a-fA-F]{24}$/); // Validation of MongoID _id Value
     if (!isValidVideoID) throw new Error('VideoID is invalid');
-    const video = await Video.findById(videoID).populate('user', 'username');
+    const video = await Video.findById(videoID).populate('creator', 'username');
 
     return video;
   } catch (err) {
@@ -27,17 +27,14 @@ const getDetailVideosService = async (videoID) => {
   }
 };
 
-const postVideoService = async (userID, title, url) => {
+const postVideoService = async (username, title, url) => {
   try {
-    if (!userID) throw new Error('userID is Required');
+    if (!username) throw new Error('username is Required');
     if (!title) throw new Error('Video title is Required');
     if (!url) throw new Error('URL thumbnail is Required');
 
-    const queriedUser = await User.findById(userID);
-
-    if (!queriedUser) throw new Error('Invalid userID');
-
     const newVideo = new Video({
+      username: username,
       title: title,
       url_thumbnail: url,
     });

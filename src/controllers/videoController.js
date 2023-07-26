@@ -35,10 +35,10 @@ const getDetailVideo = async (req, res, next) => {
 };
 
 const postVideo = async (req, res, next) => {
-  const { userID, title, url } = req.body;
+  const { username, title, url } = req.body;
 
   try {
-    if (!userID) throw new AppError('Please input username!', 404);
+    if (!username) throw new AppError('Please input username!', 404);
     if (!title) throw new AppError('Please input video title!', 404);
     if (!url) throw new AppError('Please input url thumbnail!', 404);
 

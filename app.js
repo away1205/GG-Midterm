@@ -5,9 +5,10 @@ const app = express();
 const PORT = process.env.PORT;
 const mongoose = require('mongoose');
 const router = require('./src/routes/routes');
+const DATABASE_URL = process.env.DATABASE_URL;
 
 mongoose
-  .connect('mongodb://0.0.0.0:27017/tokopedia')
+  .connect(DATABASE_URL || 'mongodb://0.0.0.0:27017/tokopedia')
   .then(() => {
     console.log('MongoDB is connected');
   })

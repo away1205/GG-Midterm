@@ -15,9 +15,9 @@ const videoSchema = new Schema({
     type: String,
     required: true,
   },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'user',
+  username: {
+    type: String,
+    required: true,
   },
   views: {
     type: Number,
