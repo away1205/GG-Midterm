@@ -10,7 +10,7 @@ const makeUserService = async (username, profilePicture) => {
     return save;
   } catch (err) {
     console.log(err);
-    throw new Error('Failed to create user in makeUserService: ' + err.message);
+    throw new Error('Failed to create user ' + err.message);
   }
 };
 
