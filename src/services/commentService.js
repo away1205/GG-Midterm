@@ -6,9 +6,7 @@ const getListCommentService = async (videoID) => {
     const isValidVideoID = videoID.match(/^[0-9a-fA-F]{24}$/); // Validation of MongoID _id Value
     if (!isValidVideoID) throw new Error('VideoID is invalid');
 
-    const comments = await Video.findById(videoID)
-      .populate('list_comments')
-      .select('comment -_id');
+    const comments = await Comment.find({ video: videoID });
 
     return comments;
   } catch (err) {
