@@ -24,16 +24,20 @@ const postProductService = async (videoID, title, link, price) => {
     if (!isValidVideoID) throw new Error('VideoID is invalid');
 
     const queriedVideo = await Video.findById(videoID);
+
     if (!queriedVideo) throw new Error('Video not found');
 
-    const product = await new Product({
+    const newProduct = await new Product({
       title: title,
       link: link,
       price_IDR: price,
     });
-    product.video = queriedVideo;
 
-    return product.save();
+    queriedVideo.list_products.push(newProduct);
+    await queriedVideo.save();
+
+    newProduct.video = queriedVideo;
+    return newProduct.save();
   } catch (err) {
     console.log(err);
     throw new Error('Failed to post product: ' + err.message);
