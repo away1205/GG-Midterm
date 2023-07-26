@@ -15,8 +15,8 @@ router.get('/', getAllVideo);
 router.post('/', postVideo);
 router.get('/:videoID', getListProduct);
 router.post('/:videoID', postProduct);
-router.get('/:videoID', getListComment);
-router.post('/:videoID', postComment);
+router.get('/:videoID/comment', getListComment);
+router.post('/:videoID/comment', postComment);
 router.post('/user', makeUser);
 
 module.exports = router;
