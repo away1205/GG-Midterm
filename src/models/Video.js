@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 
 const videoSchema = new Schema({
-  _id: {
-    type: Schema.Types.ObjectId,
-    default: new mongoose.Types.ObjectId(),
-    alias: 'videoID',
-  },
+  // _id: {
+  //   type: Schema.Types.ObjectId,
+  //   default: new mongoose.Types.ObjectId(),
+  //   alias: 'videoID',
+  // },
   url_thumbnail: {
     type: String,
     required: [true, 'URL thumbnail is required'],

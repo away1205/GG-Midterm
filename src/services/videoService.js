@@ -5,12 +5,12 @@ const getVideosService = async () => {
   try {
     const video = await Video.find()
       .populate('user', 'username')
-      .select('-product');
+      .select('-product -comment');
 
     return video;
   } catch (err) {
     console.log(err);
-    throw new Error('Failed to get videos in getVideosService: ' + err.message);
+    throw new Error('Failed to get videos: ' + err.message);
   }
 };
 
@@ -20,23 +20,23 @@ const postVideoService = async (userID, title, url) => {
     if (!title) throw new Error('Video title is Required');
     if (!url) throw new Error('URL thumbnail is Required');
 
+    const queriedUser = await User.findById(userID);
+
+    if (!queriedUser) throw new Error('Invalid userID');
+
     const newVideo = new Video({
       title: title,
       url_thumbnail: url,
     });
-    const user = await User.findById(userID);
-
-    if (!user) throw new Error('Invalid userID');
-
-    newVideo.user = user;
+    newVideo.user = queriedUser;
+    queriedUser.video.push(newVideo);
 
     const data = await newVideo.save();
+    await queriedUser.save();
     return data;
   } catch (err) {
     console.log(err);
-    throw new Error(
-      'Failed to post videos in postVideosService: ' + err.message
-    );
+    throw new Error('Failed to post videos: ' + err.message);
   }
 };
 

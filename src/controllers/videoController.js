@@ -20,15 +20,15 @@ const getAllVideo = async (req, res, next) => {
 };
 
 const postVideo = async (req, res, next) => {
-  const { user, title, url } = req.body;
+  const { userID, title, url } = req.body;
 
   try {
-    if (!user) throw new AppError('Please input username!', 404);
+    if (!userID) throw new AppError('Please input username!', 404);
     if (!title) throw new AppError('Please input video title!', 404);
     if (!url) throw new AppError('Please input url thumbnail!', 404);
 
-    const video = await postVideoService(user, title, url);
-    res.status(201).json(video);
+    const video = await postVideoService(userID, title, url);
+    res.status(201).json({ status: 'success', inserted_video: video });
   } catch (err) {
     next(err);
   }
