@@ -14,6 +14,19 @@ const getListVideosService = async () => {
   }
 };
 
+const getDetailVideosService = async (videoID) => {
+  try {
+    const isValidVideoID = videoID.match(/^[0-9a-fA-F]{24}$/); // Validation of MongoID _id Value
+    if (!isValidVideoID) throw new Error('VideoID is invalid');
+    const video = await Video.findById(videoID).populate('user', 'username');
+
+    return video;
+  } catch (err) {
+    console.log(err);
+    throw new Error('Failed to get videos: ' + err.message);
+  }
+};
+
 const postVideoService = async (userID, title, url) => {
   try {
     if (!userID) throw new Error('userID is Required');
@@ -40,4 +53,8 @@ const postVideoService = async (userID, title, url) => {
   }
 };
 
-module.exports = { getListVideosService, postVideoService };
+module.exports = {
+  getListVideosService,
+  postVideoService,
+  getDetailVideosService,
+};

@@ -1,6 +1,7 @@
 const {
   getListVideosService,
   postVideoService,
+  getDetailVideosService,
 } = require('../services/videoService');
 const AppError = require('./AppError');
 
@@ -14,6 +15,20 @@ const getListVideos = async (req, res, next) => {
       status: 'success',
       list_videos: videos,
     });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const getDetailVideo = async (req, res, next) => {
+  const { videoID } = req.params;
+
+  try {
+    const video = await getDetailVideosService(videoID);
+
+    if (!video) throw new AppError('No video', 404);
+
+    res.status(200).json({ status: 'success', detail_video: video });
   } catch (err) {
     next(err);
   }
@@ -34,4 +49,4 @@ const postVideo = async (req, res, next) => {
   }
 };
 
-module.exports = { getListVideos, postVideo };
+module.exports = { getListVideos, postVideo, getDetailVideo };
