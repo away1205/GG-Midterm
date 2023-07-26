@@ -19,20 +19,20 @@ const getListProduct = async (req, res, next) => {
 };
 
 const postProduct = async (req, res, next) => {
-  const { title, link, price } = req.body;
+  const { title, link, price_IDR } = req.body;
   const { videoID } = req.params;
 
   try {
     if (!title) throw new AppError('Please input title!', 400);
     if (!link) throw new AppError('Please input link product!', 400);
-    if (!price || isNaN(price))
-      throw new AppError('Please input the right price!', 400);
+    if (!price_IDR || isNaN(price_IDR))
+      throw new AppError('Please input the right price_IDR!', 400);
 
     const newProduct = await postProductService(
       videoID,
       title,
       link,
-      Number(price)
+      Number(price_IDR)
     );
 
     res.status(201).json({ status: 'success', inserted_product: newProduct });
