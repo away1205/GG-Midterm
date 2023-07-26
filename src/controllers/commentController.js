@@ -5,8 +5,9 @@ const {
 const AppError = require('./AppError');
 
 const getListComment = async (req, res, next) => {
+  const { videoID } = req.params;
   try {
-    const comments = await getListCommentService();
+    const comments = await getListCommentService(videoID);
 
     if (!comments) throw new AppError('No comments', 404);
 

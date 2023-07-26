@@ -21,12 +21,6 @@ const userSchema = new Schema({
       ref: 'video',
     },
   ],
-  comment: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'comment',
-    },
-  ],
 });
 
 module.exports = new mongoose.model('user', userSchema);

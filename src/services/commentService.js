@@ -3,7 +3,12 @@ const Video = require('../models/Video');
 
 const getListCommentService = async (videoID) => {
   try {
-    const comments = await Comment.find(videoID);
+    const isValidVideoID = videoID.match(/^[0-9a-fA-F]{24}$/); // Validation of MongoID _id Value
+    if (!isValidVideoID) throw new Error('VideoID is invalid');
+
+    const comments = await Video.findById(videoID)
+      .populate('comment')
+      .select('comment -_id');
     return comments;
   } catch (err) {
     console.log(err);
@@ -27,7 +32,12 @@ const postCommentService = async (videoID, username, comment) => {
     });
     newComment.video = videoID;
 
-    return newComment.save();
+    const data = await newComment.save();
+
+    queriedVideo.comment.push(newComment);
+    await queriedVideo.save();
+
+    return data;
   } catch (err) {
     console.log(err);
     throw new Error('Failed to post user comment: ' + err.message);

@@ -13,8 +13,8 @@ const {
 
 router.get('/', getAllVideo);
 router.post('/', postVideo);
-router.get('/:videoID', getListProduct);
-router.post('/:videoID', postProduct);
+router.get('/:videoID/product', getListProduct);
+router.post('/:videoID/product', postProduct);
 router.get('/:videoID/comment', getListComment);
 router.post('/:videoID/comment', postComment);
 router.post('/user', makeUser);
