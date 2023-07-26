@@ -3,9 +3,7 @@ const User = require('../models/User');
 
 const getListVideosService = async () => {
   try {
-    const video = await Video.find()
-      .populate('creator', 'username')
-      .select('-list_products -list_comments');
+    const video = await Video.find().select('-list_products -list_comments');
 
     return video;
   } catch (err) {
@@ -18,7 +16,7 @@ const getDetailVideosService = async (videoID) => {
   try {
     const isValidVideoID = videoID.match(/^[0-9a-fA-F]{24}$/); // Validation of MongoID _id Value
     if (!isValidVideoID) throw new Error('VideoID is invalid');
-    const video = await Video.findById(videoID).populate('creator', 'username');
+    const video = await Video.findById(videoID);
 
     return video;
   } catch (err) {
