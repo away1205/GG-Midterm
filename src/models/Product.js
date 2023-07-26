@@ -2,11 +2,6 @@ const mongoose = require('mongoose');
 const { Schema } = require('mongoose');
 
 const productSchema = new Schema({
-  _id: {
-    type: Schema.Types.ObjectId,
-    default: new mongoose.Types.ObjectId(),
-    alias: 'productID',
-  },
   video: {
     type: Schema.Types.ObjectId,
     ref: 'video',

@@ -29,7 +29,7 @@ const videoSchema = new Schema({
       ref: 'product',
     },
   ],
-  comment: [
+  list_comments: [
     {
       type: Schema.Types.ObjectId,
       ref: 'comment',

@@ -7,8 +7,9 @@ const getListCommentService = async (videoID) => {
     if (!isValidVideoID) throw new Error('VideoID is invalid');
 
     const comments = await Video.findById(videoID)
-      .populate('comment')
+      .populate('list_comments')
       .select('comment -_id');
+
     return comments;
   } catch (err) {
     console.log(err);
@@ -34,7 +35,7 @@ const postCommentService = async (videoID, username, comment) => {
 
     const data = await newComment.save();
 
-    queriedVideo.comment.push(newComment);
+    queriedVideo.list_comments.push(newComment);
     await queriedVideo.save();
 
     return data;

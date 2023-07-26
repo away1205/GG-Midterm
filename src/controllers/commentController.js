@@ -11,7 +11,7 @@ const getListComment = async (req, res, next) => {
 
     if (!comments) throw new AppError('No comments', 404);
 
-    res.status(200).json({ status: 'success', list_comments: comments });
+    res.status(200).json({ status: 'success', data: comments });
   } catch (err) {
     next(err);
   }
