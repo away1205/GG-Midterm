@@ -9,7 +9,7 @@ const getListProductService = async (videoID) => {
     const queriedVideo = await Video.findById(videoID);
     if (!queriedVideo) throw new Error('Video not found');
 
-    const products = await Product.find({ video: videoID });
+    const products = await Product.find({ video: videoID }).select('-video');
 
     return products;
   } catch (err) {

@@ -9,7 +9,7 @@ const getListComment = async (req, res, next) => {
   try {
     const comments = await getListCommentService(videoID);
 
-    if (!comments) throw new AppError('No comments', 404);
+    if (comments.length < 1) throw new AppError('No comments', 404);
 
     res.status(200).json({ status: 'success', list_comments: comments });
   } catch (err) {

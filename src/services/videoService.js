@@ -5,7 +5,7 @@ const getVideosService = async () => {
   try {
     const video = await Video.find()
       .populate('user', 'username')
-      .select('-product -comment');
+      .select('-product -list_comments');
 
     return video;
   } catch (err) {
