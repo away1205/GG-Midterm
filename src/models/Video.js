@@ -23,7 +23,7 @@ const videoSchema = new Schema({
     type: Number,
     default: 0,
   },
-  product: [
+  list_products: [
     {
       type: Schema.Types.ObjectId,
       ref: 'product',

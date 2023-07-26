@@ -1,11 +1,11 @@
 const Video = require('../models/Video');
 const User = require('../models/User');
 
-const getVideosService = async () => {
+const getListVideosService = async () => {
   try {
     const video = await Video.find()
       .populate('user', 'username')
-      .select('-product -list_comments');
+      .select('-list_products -list_comments');
 
     return video;
   } catch (err) {
@@ -40,4 +40,4 @@ const postVideoService = async (userID, title, url) => {
   }
 };
 
-module.exports = { getVideosService, postVideoService };
+module.exports = { getListVideosService, postVideoService };

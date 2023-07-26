@@ -1,12 +1,12 @@
 const {
-  getVideosService,
+  getListVideosService,
   postVideoService,
 } = require('../services/videoService');
 const AppError = require('./AppError');
 
-const getAllVideo = async (req, res, next) => {
+const getListVideos = async (req, res, next) => {
   try {
-    const videos = await getVideosService();
+    const videos = await getListVideosService();
 
     if (videos.length < 1) throw new AppError('No Videos', 404);
 
@@ -34,4 +34,4 @@ const postVideo = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllVideo, postVideo };
+module.exports = { getListVideos, postVideo };
