@@ -10,12 +10,6 @@ const userSchema = new Schema({
     type: String,
     default: 'dummy',
   },
-  video: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'video',
-    },
-  ],
 });
 
 module.exports = new mongoose.model('user', userSchema);
