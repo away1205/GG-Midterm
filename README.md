@@ -9,8 +9,6 @@ This is mid term project in Generasi GIGIH 3.0
 - [API Endpoints](#api-endpoints)
 - [How to Run Locally](#how-to-run-locally)
 - [Deployment](#deployment)
-- [License](#license)
-- [Contributors](#contributors)
 
 ## Database Structure
 
@@ -85,7 +83,7 @@ To run the application locally on your machine, follow these steps:
    npm install
    ```
 
-4. Set up environment variables (if required) by creating a `.env` file in the root folder and defining the necessary variables (e.g., `PORT`, `MYDATABASE_URL`, etc.).
+4. Set up environment variables (if required) by creating a `.env` file in the root folder and defining the necessary variables (e.g., `PORT`, `MYDATABASE_URL`.).
 
 5. Start the server:
    ```
