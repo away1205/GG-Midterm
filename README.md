@@ -66,7 +66,7 @@ The API provides the following endpoints:
 
 ### Video API
 
-- **GET /api/videos**: Get a list of all videos.
+- **GET /**: Get a list of all videos.
   - Request: None
   - Response:
   ```json
@@ -85,7 +85,7 @@ The API provides the following endpoints:
   }
   ```
 
-- **GET /api/videos/:videoID**: Get details of a specific video.
+- **GET /:videoID**: Get details of a specific video.
   - Request: None
   - Response:
   ```json
@@ -119,7 +119,7 @@ The API provides the following endpoints:
   }
   ```
 
-- **POST /api/videos**: Post a new video.
+- **POST /**: Post a new video.
   - Request:
   ```json
   {
@@ -146,7 +146,7 @@ The API provides the following endpoints:
 
 ### Product API
 
-- **GET /api/videos/:videoID/product**: Get a list of products associated with a video.
+- **GET /:videoID/product**: Get a list of products associated with a video.
   - Request: None
   - Response:
   ```json
@@ -164,7 +164,7 @@ The API provides the following endpoints:
   }
   ```
 
-- **POST /api/videos/:videoID/product**: Post a new product for a video.
+- **POST /:videoID/product**: Post a new product for a video.
   - Request:
   ```json
   {
@@ -188,7 +188,7 @@ The API provides the following endpoints:
 
 ### Comment API
 
-- **GET /api/videos/:videoID/comment**: Get a list of comments associated with a video.
+- **GET /:videoID/comment**: Get a list of comments associated with a video.
   - Request: None
   - Response:
   ```json
@@ -206,7 +206,7 @@ The API provides the following endpoints:
   }
   ```
 
-- **POST /api/videos/:videoID/comment**: Post a new comment for a video.
+- **POST /:videoID/comment**: Post a new comment for a video.
   - Request:
   ```json
   {
@@ -229,7 +229,7 @@ The API provides the following endpoints:
 
 ### User API
 
-- **POST /api/user**: Create a new user.
+- **POST /user**: Create a new user.
   - Request:
   ```json
   {
