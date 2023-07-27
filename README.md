@@ -64,6 +64,191 @@ The API provides the following endpoints:
 | `/:videoID/comments`| POST   | `{ username: '...', comment: '...' }`                | `{ status: 'success', inserted_comment: {...} }` | Post a new comment for a video |
 | `/users`            | POST   | `{ username: '...', profilePicture: '...' }`         | `{ status: 'success', created_user: {...} }`     | Create a new user             |
 
+### Video API
+
+- **GET /api/videos**: Get a list of all videos.
+  - Request: None
+  - Response:
+  ```json
+  {
+    "status": "success",
+    "list_videos": [
+      {
+        "_id": "video_id",
+        "url_thumbnail": "thumbnail_url",
+        "title": "Video Title",
+        "username": "Uploader",
+        "views": 1000
+      },
+      // ...other videos
+    ]
+  }
+  ```
+
+- **GET /api/videos/:videoID**: Get details of a specific video.
+  - Request: None
+  - Response:
+  ```json
+  {
+    "status": "success",
+    "detail_video": {
+      "_id": "video_id",
+      "url_thumbnail": "thumbnail_url",
+      "title": "Video Title",
+      "username": "Uploader",
+      "views": 1000,
+      "list_products": [
+        {
+          "_id": "product_id",
+          "title": "Product Title",
+          "link": "product_link",
+          "price_IDR": 50000
+        },
+        // ...other products
+      ],
+      "list_comments": [
+        {
+          "_id": "comment_id",
+          "username": "Commenter",
+          "comment": "This is a comment",
+          "timestamp": "2023-07-27T12:34:56.789Z"
+        },
+        // ...other comments
+      ]
+    }
+  }
+  ```
+
+- **POST /api/videos**: Post a new video.
+  - Request:
+  ```json
+  {
+    "username": "Uploader",
+    "title": "Video Title",
+    "url": "thumbnail_url"
+  }
+  ```
+  - Response:
+  ```json
+  {
+    "status": "success",
+    "inserted_video": {
+      "_id": "new_video_id",
+      "username": "Uploader",
+      "title": "Video Title",
+      "url_thumbnail": "thumbnail_url",
+      "views": 0,
+      "list_products": [],
+      "list_comments": []
+    }
+  }
+  ```
+
+### Product API
+
+- **GET /api/videos/:videoID/product**: Get a list of products associated with a video.
+  - Request: None
+  - Response:
+  ```json
+  {
+    "status": "success",
+    "list_products": [
+      {
+        "_id": "product_id",
+        "title": "Product Title",
+        "link": "product_link",
+        "price_IDR": 50000
+      },
+      // ...other products
+    ]
+  }
+  ```
+
+- **POST /api/videos/:videoID/product**: Post a new product for a video.
+  - Request:
+  ```json
+  {
+    "title": "Product Title",
+    "link": "product_link",
+    "price_IDR": 50000
+  }
+  ```
+  - Response:
+  ```json
+  {
+    "status": "success",
+    "inserted_product": {
+      "_id": "new_product_id",
+      "title": "Product Title",
+      "link": "product_link",
+      "price_IDR": 50000
+    }
+  }
+  ```
+
+### Comment API
+
+- **GET /api/videos/:videoID/comment**: Get a list of comments associated with a video.
+  - Request: None
+  - Response:
+  ```json
+  {
+    "status": "success",
+    "list_comments": [
+      {
+        "_id": "comment_id",
+        "username": "Commenter",
+        "comment": "This is a comment",
+        "timestamp": "2023-07-27T12:34:56.789Z"
+      },
+      // ...other comments
+    ]
+  }
+  ```
+
+- **POST /api/videos/:videoID/comment**: Post a new comment for a video.
+  - Request:
+  ```json
+  {
+    "username": "Commenter",
+    "comment": "This is a comment"
+  }
+  ```
+  - Response:
+  ```json
+  {
+    "status": "success",
+    "inserted_comment": {
+      "_id": "new_comment_id",
+      "username": "Commenter",
+      "comment": "This is a comment",
+      "timestamp": "2023-07-27T12:34:56.789Z"
+    }
+  }
+  ```
+
+### User API
+
+- **POST /api/user**: Create a new user.
+  - Request:
+  ```json
+  {
+    "username": "NewUser",
+    "profilePicture": "profile_picture_url"
+  }
+  ```
+  - Response:
+  ```json
+  {
+    "status": "success",
+    "created_user": {
+      "_id": "new_user_id",
+      "username": "NewUser",
+      "profile_picture": "profile_picture_url"
+    }
+  }
+  ```
+
 ## How to Run Locally
 
 To run the application locally on your machine, follow these steps:
