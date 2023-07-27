@@ -1,5 +1,4 @@
 const Video = require('../models/Video');
-const User = require('../models/User');
 
 const getListVideosService = async () => {
   try {
