@@ -17,7 +17,9 @@ const getDetailVideosService = async (videoID) => {
     const isValidVideoID = videoID.match(/^[0-9a-fA-F]{24}$/); // Validation of MongoID _id Value
     if (!isValidVideoID) return null;
 
-    const video = await Video.findById(videoID);
+    const video = await Video.findById(videoID).populate(
+      'list_products list_comments'
+    );
 
     return video;
   } catch (err) {
