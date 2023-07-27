@@ -55,9 +55,9 @@ The API provides the following endpoints:
 
 | Endpoint                | Method | Request Body                                           | Response Body                                     | Description                   |
 |-------------------------|--------|--------------------------------------------------------|---------------------------------------------------|-------------------------------|
-| `/videos`           | GET    | N/A                                                    | `{ status: 'success', list_videos: [...] }`       | Get a list of video thumbnails |
+| `/`           | GET    | N/A                                                    | `{ status: 'success', list_videos: [...] }`       | Get a list of video thumbnails |
 | `/:videoID`  | GET    | N/A                                                    | `{ status: 'success', detail_video: {...} }`     | Get details of a specific video |
-| `/videos`           | POST   | `{ username: '...', title: '...', url: '...' }`      | `{ status: 'success', inserted_video: {...} }`   | Post a new video              |
+| `/`           | POST   | `{ username: '...', title: '...', url: '...' }`      | `{ status: 'success', inserted_video: {...} }`   | Post a new video              |
 | `/:videoID/products`| GET    | N/A                                                    | `{ status: 'success', list_products: [...] }`    | Get a list of products for a video |
 | `/:videoID/products`| POST   | `{ title: '...', link: '...', price_IDR: ... }`      | `{ status: 'success', inserted_product: {...} }` | Post a new product for a video |
 | `/:videoID/comments`| GET    | N/A                                                    | `{ status: 'success', list_comments: [...] }`    | Get a list of comments for a video |
