@@ -12,7 +12,7 @@ This is mid term project in Generasi GIGIH 3.0
 
 ## Database Structure
 
-Here is the structure of the database, including the relationships between entities (e.g., Video, Product, Comment). Mention the key fields and their data types for each model in your database. Here is an example:
+Here is the structure of the database, including the relationships between entities (Video, Product, Comment, User).
 
 - `Video` Model:
   - `url_thumbnail`: String (required) - URL of the video thumbnail.
@@ -55,14 +55,14 @@ The API provides the following endpoints:
 
 | Endpoint                | Method | Request Body                                           | Response Body                                     | Description                   |
 |-------------------------|--------|--------------------------------------------------------|---------------------------------------------------|-------------------------------|
-| `/api/videos`           | GET    | N/A                                                    | `{ status: 'success', list_videos: [...] }`       | Get a list of video thumbnails |
-| `/api/videos/:videoID`  | GET    | N/A                                                    | `{ status: 'success', detail_video: {...} }`     | Get details of a specific video |
-| `/api/videos`           | POST   | `{ username: '...', title: '...', url: '...' }`      | `{ status: 'success', inserted_video: {...} }`   | Post a new video              |
-| `/api/products/:videoID`| GET    | N/A                                                    | `{ status: 'success', list_products: [...] }`    | Get a list of products for a video |
-| `/api/products/:videoID`| POST   | `{ title: '...', link: '...', price_IDR: ... }`      | `{ status: 'success', inserted_product: {...} }` | Post a new product for a video |
-| `/api/comments/:videoID`| GET    | N/A                                                    | `{ status: 'success', list_comments: [...] }`    | Get a list of comments for a video |
-| `/api/comments/:videoID`| POST   | `{ username: '...', comment: '...' }`                | `{ status: 'success', inserted_comment: {...} }` | Post a new comment for a video |
-| `/api/users`            | POST   | `{ username: '...', profilePicture: '...' }`         | `{ status: 'success', created_user: {...} }`     | Create a new user             |
+| `/`           | GET    | N/A                                                    | `{ status: 'success', list_videos: [...] }`       | Get a list of video thumbnails |
+| `/:videoID`  | GET    | N/A                                                    | `{ status: 'success', detail_video: {...} }`     | Get details of a specific video |
+| `/`           | POST   | `{ username: '...', title: '...', url: '...' }`      | `{ status: 'success', inserted_video: {...} }`   | Post a new video              |
+| `/:videoID/products`| GET    | N/A                                                    | `{ status: 'success', list_products: [...] }`    | Get a list of products for a video |
+| `/:videoID/products`| POST   | `{ title: '...', link: '...', price_IDR: ... }`      | `{ status: 'success', inserted_product: {...} }` | Post a new product for a video |
+| `/:videoID/comments`| GET    | N/A                                                    | `{ status: 'success', list_comments: [...] }`    | Get a list of comments for a video |
+| `/:videoID/comments`| POST   | `{ username: '...', comment: '...' }`                | `{ status: 'success', inserted_comment: {...} }` | Post a new comment for a video |
+| `/users`            | POST   | `{ username: '...', profilePicture: '...' }`         | `{ status: 'success', created_user: {...} }`     | Create a new user             |
 
 ## How to Run Locally
 
