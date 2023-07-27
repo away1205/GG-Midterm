@@ -1,6 +1,6 @@
 # Tokopedia Play Clone API
 
-This is mid term project in Generasi GIGIH 3.0
+This is the mid-term project in Generasi GIGIH 3.0. By doing this project I gained experience in designing a RESTful API, handling HTTP methods, and managing database modelling. Error handling taught me how to handle unexpected scenarios and provide meaningful error messages. Deploying the application to a production environment exposed me to live server setup. I practised organizing code and following clean code practices for maintainability. The project management aspect involved planning, setting milestones, and meeting deadlines. Problem-solving skills were honed as I tackled challenges and bugs. Writing documentation, like the README, improved my ability to communicate technical information clearly and concisely. This project provided a valuable learning opportunity, helping me grow as a developer and prepare for future endeavours in software development.
 
 ## Table of Contents
 
@@ -12,7 +12,7 @@ This is mid term project in Generasi GIGIH 3.0
 
 ## Database Structure
 
-Here is the structure of the database, including the relationships between entities (Video, Product, Comment, User).
+Here is the structure of the database, including the relationships between models (Video, Product, Comment, User).
 
 - `Video` Model:
   - `url_thumbnail`: String (required) - URL of the video thumbnail.
