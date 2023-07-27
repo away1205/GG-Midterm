@@ -16,7 +16,6 @@ mongoose
     console.log(error);
   });
 
-// app.use(express.json()); // not working
 app.use(express.urlencoded({ extended: true }));
 app.use(router);
 
