@@ -4,10 +4,15 @@ require('dotenv').config();
 // Import required modules
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT;
 const mongoose = require('mongoose');
+const cors = require('cors');
+
+const PORT = process.env.PORT;
 const router = require('./src/routes/routes');
 const DATABASE_URL = process.env.MYDATABASE_URL;
+
+//Enable all the CORS request
+app.use(cors());
 
 // Connect to the MongoDB database using the provided URL or a default one
 mongoose
