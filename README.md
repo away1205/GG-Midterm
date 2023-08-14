@@ -18,7 +18,6 @@ Here is the structure of the database, including the relationships between model
   - `url_thumbnail`: String (required) - URL of the video thumbnail.
   - `title`: String (required) - Title of the video.
   - `username`: String (required) - Username of the video creator.
-  - `views`: Number (default: 0) - Number of views for the video.
   - `list_products`: Array of ObjectIds (references `Product`) - List of products associated with the video.
   - `list_comments`: Array of ObjectIds (references `Comment`) - List of comments associated with the video.
 
@@ -73,7 +72,6 @@ The API provides the following endpoints:
         "url_thumbnail": "thumbnail_url",
         "title": "Video Title",
         "username": "Uploader",
-        "views": 1000
       },
       // ...other videos
     ]
