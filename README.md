@@ -57,7 +57,7 @@ The API provides the following endpoints:
 | `/:videoID/products`| POST   | `{ title: '...', link: '...', price_IDR: ... }`      | `{ status: 'success', inserted_product: {...} }` | Post a new product for a video |
 | `/:videoID/comments`| GET    | N/A                                                    | `{ status: 'success', list_comments: [...] }`    | Get a list of comments for a video |
 | `/:videoID/comments`| POST   | `{ username: '...', comment: '...' }`                | `{ status: 'success', inserted_comment: {...} }` | Post a new comment for a video |
-| `/:videoID/comments/sse`| GET   | N/A                                              | `{ status: 'success', inserted_comment: {...} }` | Get a realtime new comment for a video |
+| `/:videoID/comments/sse`| GET   | N/A                                              | `data: {"newComment":{"username" {...} }}` | Get a realtime new comment for a video |
 
 ### Video API
 
