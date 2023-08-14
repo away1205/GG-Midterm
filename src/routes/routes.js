@@ -14,6 +14,7 @@ const {
   getListComment,
   postComment,
 } = require('../controllers/commentController');
+const { sseController } = require('../controllers/sseController');
 
 // POST / - Endpoint for posting a new video
 router.post('/', postVideo);
@@ -32,6 +33,9 @@ router.post('/:videoID/product', postProduct);
 
 // GET /:videoID/comment - Endpoint for getting a list of comments associated with a video
 router.get('/:videoID/comment', getListComment);
+
+// Comment SSE Route
+router.get('/:videoID/comment/sse', sseController);
 
 // POST /:videoID/comment - Endpoint for posting a new comment for a video
 router.post('/:videoID/comment', postComment);

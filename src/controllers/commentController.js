@@ -3,6 +3,7 @@ const {
   postCommentService,
 } = require('../services/commentService');
 const AppError = require('./AppError');
+const { eventEmitter } = require('./sseController');
 
 const getListComment = async (req, res, next) => {
   const { videoID } = req.params;
@@ -32,6 +33,11 @@ const postComment = async (req, res, next) => {
 
     // Post a new comment for the specified video using the commentService
     const newComment = await postCommentService(videoID, username, comment);
+
+    // Emit the new comment event
+    eventEmitter.emit('newComment', {
+      newComment,
+    });
 
     // Send the inserted comment as a JSON response with a 201 status (created)
     res.status(201).json({ status: 'success', inserted_comment: newComment });
