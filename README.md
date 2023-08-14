@@ -34,10 +34,6 @@ Here is the structure of the database, including the relationships between model
   - `comment`: String (required) - Comment text.
   - `timestamp`: Date (default: current timestamp) - Timestamp of when the comment was made.
 
-- `User` Model:
-  - `username`: String (required) - Username of the user.
-  - `profile_picture`: String (default: 'dummy') - URL of the user's profile picture.
-
 ## API Structure
 
 The API follows a RESTful structure and is organized into the following components:
@@ -62,7 +58,6 @@ The API provides the following endpoints:
 | `/:videoID/products`| POST   | `{ title: '...', link: '...', price_IDR: ... }`      | `{ status: 'success', inserted_product: {...} }` | Post a new product for a video |
 | `/:videoID/comments`| GET    | N/A                                                    | `{ status: 'success', list_comments: [...] }`    | Get a list of comments for a video |
 | `/:videoID/comments`| POST   | `{ username: '...', comment: '...' }`                | `{ status: 'success', inserted_comment: {...} }` | Post a new comment for a video |
-| `/users`            | POST   | `{ username: '...', profilePicture: '...' }`         | `{ status: 'success', created_user: {...} }`     | Create a new user             |
 
 ### Video API
 
@@ -223,28 +218,6 @@ The API provides the following endpoints:
       "username": "Commenter",
       "comment": "This is a comment",
       "timestamp": "2023-07-27T12:34:56.789Z"
-    }
-  }
-  ```
-
-### User API
-
-- **POST /user**: Create a new user.
-  - Request:
-  ```json
-  {
-    "username": "NewUser",
-    "profilePicture": "profile_picture_url"
-  }
-  ```
-  - Response:
-  ```json
-  {
-    "status": "success",
-    "created_user": {
-      "_id": "new_user_id",
-      "username": "NewUser",
-      "profile_picture": "profile_picture_url"
     }
   }
   ```
