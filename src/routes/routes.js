@@ -5,7 +5,6 @@ const {
   postVideo,
   getDetailVideo,
 } = require('../controllers/videoController');
-const makeUser = require('../controllers/userController');
 const {
   getListProduct,
   postProduct,
@@ -39,8 +38,5 @@ router.get('/:videoID/comment/sse', sseController);
 
 // POST /:videoID/comment - Endpoint for posting a new comment for a video
 router.post('/:videoID/comment', postComment);
-
-// POST /user - Endpoint for creating a new user
-router.post('/user', makeUser);
 
 module.exports = router;
