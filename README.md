@@ -198,7 +198,7 @@ The API provides the following endpoints:
     ]
   }
   ```
-- **GET /api/videos/:videoID/comment/sse: Server-Sent Events (SSE) have been implemented to provide real-time updates for comments. Clients can subscribe to the SSE endpoint to receive new comment events as they are posted.
+- **GET /api/videos/:videoID/comment/sse**: Server-Sent Events (SSE) have been implemented to provide real-time updates for comments. Clients can subscribe to the SSE endpoint to receive new comment events as they are posted.
   - Request: None
   - Response: SSE events for new comments.
 
