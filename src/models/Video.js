@@ -14,10 +14,6 @@ const videoSchema = new Schema({
     type: String,
     required: true,
   },
-  views: {
-    type: Number,
-    default: 0,
-  },
   list_products: [
     {
       type: Schema.Types.ObjectId,
