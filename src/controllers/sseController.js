@@ -10,7 +10,7 @@ const sseController = async (req, res, next) => {
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
-    res.setHeader('access-control-allow-origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
 
     // Send a comment event when new comments are posted
     eventEmitter.on('newComment', (comment) => {
