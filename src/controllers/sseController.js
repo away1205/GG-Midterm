@@ -12,6 +12,8 @@ const sseController = async (req, res, next) => {
     res.setHeader('Connection', 'keep-alive');
     res.setHeader('Access-Control-Allow-Origin', '*');
 
+    res.flushHeaders();
+
     // Send a comment event when new comments are posted
     eventEmitter.on('newComment', (comment) => {
       res.write(`data: ${JSON.stringify(comment)}\n\n`);
