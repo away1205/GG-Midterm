@@ -12,11 +12,7 @@ const router = require('./src/routes/routes');
 const DATABASE_URL = process.env.MYDATABASE_URL;
 
 //Enable all the CORS request
-app.use(
-  cors({
-    origin: ['http://localhost:5173', 'https://tokplay.netlify.app/'],
-  })
-);
+app.use(cors());
 
 // Connect to the MongoDB database using the provided URL or a default one
 mongoose
