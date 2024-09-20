@@ -1,4 +1,4 @@
-# Tokopedia Play Clone API
+# Tokopedia Play API
 
 This is the mid-term project in Generasi GIGIH 3.0. By doing this project I gained experience in designing a RESTful API, handling HTTP methods, and managing database modelling. Error handling taught me how to handle unexpected scenarios and provide meaningful error messages. Deploying the application to a production environment exposed me to live server setup. I practised organizing code and following clean code practices for maintainability. The project management aspect involved planning, setting milestones, and meeting deadlines. Problem-solving skills were honed as I tackled challenges and bugs. Writing documentation, like the README, improved my ability to communicate technical information clearly and concisely. This project provided a valuable learning opportunity, helping me grow as a developer and prepare for future endeavours in software development.
 
@@ -228,9 +228,9 @@ The API provides the following endpoints:
 
 To run the application locally on your machine, follow these steps:
 
-1. Clone the repository to your local machine:
+1.  the repository to your local machine:
    ```
-   git clone <repository-url>
+   git  <repository-url>
    ```
 
 2. Navigate to the project folder:
@@ -250,11 +250,11 @@ To run the application locally on your machine, follow these steps:
    npm start
    ```
 
-6. The API should now be running locally at `http://localhost:3000` or the specified `PORT`.
+6. The API should now run locally at `http://localhost:3000` or the specified `PORT`.
 
 Note: Make sure you have Node.js and MongoDB installed on your machine before running the project locally.
 
 ## Deployment
 
 The project is deployed and accessible at the following link:
-[https://tokopedia-play-clone.cyclic.app/](https://tokopedia-play-clone.cyclic.app/)
+[https://tokopedia-play-.cyclic.app/](https://tokopedia-play-.cyclic.app/)
